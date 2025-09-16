@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
 	string rutaB = argv[2];
     char separador = argv[3][0];
 
-   	cout << "---= MULTIPLICADOR DE MATRICES AxB =---" << endl;
+   	cout << "---= MULTIPLICADOR DE MATRICES AxB =---"<< " PID: " << getpid() << endl;
     cout << "Separador: " << separador << endl;
 
     leeMatriz(rutaA, rutaB, separador);

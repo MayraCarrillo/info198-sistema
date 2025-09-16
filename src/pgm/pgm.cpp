@@ -4,10 +4,12 @@
 #include "../include/conteo.h"
 #include "../include/calcula_funcion.h"
 #include "../include/palindrome.h"
+#include "../include/interfaz_multi.h"
 #include <cstring>
 #include <string>
 #include <cstring>
 #include <unistd.h>
+
 using namespace std;
 
 int autenticarUsuario(vector<usuario>& usuarios, string usuarioIngresado, string passwordIngresada);
@@ -79,8 +81,8 @@ int main(int argc, char* argv[]) {
                 break;
             case 2:            
                 cout << "PID: " << getpid() << endl;
-                system(multi.c_str());
-                esperarTecla();
+                menuMatrices(multi);
+                esperarTecla(); 
                 break;
             case 3:
                 cout << "PID: " << getpid() << endl;
