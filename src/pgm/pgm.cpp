@@ -7,6 +7,7 @@
 #include <cstring>
 #include <string>
 #include <cstring>
+#include <unistd.h>
 using namespace std;
 
 int autenticarUsuario(vector<usuario>& usuarios, string usuarioIngresado, string passwordIngresada);
@@ -37,7 +38,10 @@ int main(int argc, char* argv[]) {
 
     dotenv env(".env");
     vector<usuario> usuarios;
+    string admin_sys = env.get("ADMIN_SYS");
+    string create_index = env.get("CREATE_INDEX");
     string archivoUsuarios = env.get("USER_FILE");
+    string multi = env.get("MUTLI_M");
 
     cargarUsuarios(usuarios, archivoUsuarios);
     int indiceUsuario = autenticarUsuario(usuarios, args::get(usuarioIngresado), args::get(passwordIngresada));
@@ -51,7 +55,7 @@ int main(int argc, char* argv[]) {
 
     while (true) {
         cout << endl;
-        cout << "---= PROGRAMA PRINCIPAL =---" << endl;
+        cout << "---= PROGRAMA PRINCIPAL =---" << "PID: " << getpid() << endl;;
         cout << "Usuario: " << args::get(usuarioIngresado) << endl;
         cout << endl;
         cout << "0) Salir" << endl;
@@ -61,6 +65,7 @@ int main(int argc, char* argv[]) {
         cout << "4) ¿Es palíndromo?" << endl;
         cout << "5) Calcula f(x) = x² + 2x + 8" << endl;
         cout << "6) Conteo sobre texto" << endl;
+        cout << "7) Crear indice invertido" << endl;
         cout << endl;
 
         int opcionInt = solicitarOpcion(u.perfil);
@@ -68,25 +73,36 @@ int main(int argc, char* argv[]) {
 
         switch (opcionInt) {
             case 1:
-                cout << "(ERROR) Opción en construcción." << endl;
+                cout << "PID: " << getpid() << endl;
+                system(admin_sys.c_str());
                 esperarTecla();
                 break;
-            case 2:
-                cout << "(ERROR) Opción en construcción." << endl;
+            case 2:            
+                cout << "PID: " << getpid() << endl;
+                system(multi.c_str());
                 esperarTecla();
                 break;
             case 3:
+                cout << "PID: " << getpid() << endl;
                 cout << "(ERROR) Opción en construcción." << endl;
                 esperarTecla();
                 break;
             case 4:
+                cout << "PID: " << getpid() << endl;
                 menuPalindromo();
                 break;
             case 5:
+                cout << "PID: " << getpid() << endl;
                 calcularFuncion();
                 break;
             case 6:
+                cout << "PID: " << getpid() << endl;
                 imprimirConteo(args::get(rutaArchivoIngresada));
+                esperarTecla();
+                break;
+            case 7:
+                cout << "PID: " << getpid() << endl;
+                system(create_index.c_str());
                 esperarTecla();
                 break;
             case 0:
@@ -121,7 +137,6 @@ int solicitarOpcion(char* perfil) {
     while (true) {
         cout << "Ingrese opción (debe ser número): ";
         cin >> opcion;
-
         if (esEntero(opcion)) {
             if (std::stoi(opcion) == 1 && strcmp(perfil, "GENERAL") == 0) {
                 cout << "(ERROR) Usted no tiene permisos para usar esta opción. Intente con otra." << endl;

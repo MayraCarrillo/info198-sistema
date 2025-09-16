@@ -6,6 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <unistd.h>
 
 wchar_t normalizarVocal(wchar_t c) {
     switch (c) {
@@ -31,6 +32,7 @@ std::vector<int> contar(std::string archivoTexto) {
     int n_especiales = 0;
 
     while (getline(archivo, linea)) {
+        std::cout << "PID: " << getpid() << std::endl;
 
         std::wistringstream iss(linea);
         std::wstring palabra;
@@ -56,6 +58,7 @@ std::vector<int> contar(std::string archivoTexto) {
 }
 
 void imprimirConteo(std::string archivoTexto){
+    std::cout << "PID: " << getpid() << std::endl;
     if (!std::filesystem::exists(archivoTexto)) {
         std::cout << "(ERROR) El archivo " << archivoTexto << " no existe"<< std::endl;
         return;

@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include <chrono>
+#include <unistd.h>
 using namespace std;
 using namespace std::chrono;
 
@@ -26,7 +27,7 @@ int main(int argc, char* argv[]) {
 
     while (true) {
         cout << endl;
-        cout << "---= SISTEMA DE USUARIOS =---" << endl;
+        cout << "---= SISTEMA DE USUARIOS =---" << "PID: " << getpid() << endl;
         cout << "0) Salir" << endl;
         cout << "1) Crear usuario" << endl;
         cout << "2) Listar usuarios" << endl;

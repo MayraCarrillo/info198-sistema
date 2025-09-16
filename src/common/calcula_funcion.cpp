@@ -2,6 +2,7 @@
 #include "../include/util.h"
 #include <iostream>
 #include <limits>
+#include <unistd.h>
 using namespace std;
 
 void calcularFuncion() {

@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cctype>
 #include <limits>
+#include <unistd.h>
 
 using namespace std;
 
@@ -33,7 +34,7 @@ void menuPalindromo(){
     string texto;
     int opcion;
 
-    cout << "---= VERIFICADOR DE PALÍNDROMOS =---" << endl;
+    cout << "---= VERIFICADOR DE PALÍNDROMOS =---" << "PID: " << getpid() << endl;;
 
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -45,14 +46,17 @@ void menuPalindromo(){
 
     switch(opcion){
         case 1:
+            cout << "PID: " << getpid() << endl;
             if (esPalindromo(texto)) cout << "El texto SÍ es un palíndromo." << endl;
             else cout << "El texto NO es un palíndromo." << endl;
             esperarTecla();
             break;
         case 2:
+            cout << "PID: " << getpid() << endl;
             cout << "Operación cancelada." << endl;
             break;
         default:
+            cout << "PID: " << getpid() << endl;
             cout << "(ERROR) ¡Opción inválida!" << endl;
             esperarTecla();
     }

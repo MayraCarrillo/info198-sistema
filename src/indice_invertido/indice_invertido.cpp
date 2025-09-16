@@ -8,6 +8,7 @@
 #include <filesystem>
 #include <unordered_map>
 #include <fstream>
+#include <unistd.h>
 using namespace std;
 namespace fs = std::filesystem;
 
@@ -87,7 +88,7 @@ void ingresarNombreArchivo(string &nombreArchivo ) {
     cout << endl;
     cout<<"------------------------------------------";
     cout << endl;
-    cout << "---= NOMBRE DEL ARCHIVO A CREAR =---" << endl;
+    cout << "---= NOMBRE DEL ARCHIVO A CREAR =---" << "PID: " << getpid() << endl;
     while(true){
         cout<<"------------------------------------------"<<endl;
         cout << "Ingresar nombre (Debe ser .idx): ";
@@ -124,8 +125,9 @@ int main(){
     string librosPath;
     string nombreArchivo;
     while (true) {
+        cout << "PID: " << getpid() << endl;
         cout << endl;
-        cout << "---= CREA INDICE INVERTIDO =---" << endl;
+        cout << "---= CREA INDICE INVERTIDO =---" << "PID: " << getpid() << endl;;
         cout << "1) Ingresar nombre del archivo a crear" << endl;
         cout << "2) Ingresar path de los libros" << endl;
         cout << "   --Path actual:" <<  librosPath << endl;
@@ -140,7 +142,7 @@ int main(){
             cout << endl;
             while(true){
                 //Verificar si el PATH existe o no
-                cout << "---= INGRESAR PATH A LA CARPETA LIBROS =---" << endl;
+                cout << "---= INGRESAR PATH A LA CARPETA LIBROS =---" << "PID: " << getpid() << endl;;
                 cin >> librosPath;
                 cout << "Confirma el path: " << librosPath << "?" <<endl;
                 cout << "1) Sí"<< endl;
