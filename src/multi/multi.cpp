@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <string>
 #include <fstream>
+#include <unistd.h>
 
 using namespace std;
 
